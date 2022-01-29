@@ -32,5 +32,5 @@ func main() {
 
 	examinatorController := rest.NewRestController(logger, httpServer, examinatorService)
 
-	logger.Errorf("%+v", examinatorController.Serve())
+	logger.Errorf("%+v", examinatorController.Serve(appConfig.RestAdress))
 }

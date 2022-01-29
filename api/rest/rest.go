@@ -20,6 +20,11 @@ func NewRestController(logger log.Logger, server *echo.Echo, service service.Exa
 	}
 }
 
-func (c RestController) Serve() error {
-	return c.server.Start(":6789")
+func (c RestController) Serve(address string) error {
+	c.registerRoutes()
+	return c.server.Start(address)
+}
+
+func (c *RestController) registerRoutes() {
+	c.server.GET("/", c.Index)
 }
